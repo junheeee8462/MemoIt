@@ -1,0 +1,111 @@
+@charset "UTF-8";
+
+/* 기본 레이아웃 설정 */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f5;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+}
+
+/* 제목 스타일 */
+h1 {
+    font-size: 2.5em;
+    color: #333;
+    text-align: center;
+}
+
+/* 로그인, 회원가입 버튼을 오른쪽 상단에 배치 */
+.auth-buttons {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.auth-buttons .btn {
+    margin-left: 10px;
+    color: #2e50ee;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* 메모 작성 폼 */
+.memo-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.memo-form textarea {
+    width: 100%;
+    height: 80px;
+    font-size: 1em;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
+}
+
+.save-btn {
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: #2e50ee;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* 메모 목록 */
+.memo-list {
+    margin-top: 20px;
+}
+/* 메모 항목 */
+.memo-item {
+    background-color: #fff7a8; /* 연한 노란색 */
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    word-wrap: break-word; /* 단어를 잘라서 다음 줄로 넘김 */
+    white-space: normal; /* 줄 바꿈 허용 */
+    overflow-wrap: break-word; /* 내용이 박스를 넘어가지 않도록 함 */
+    max-width: 100%; /* 컨테이너 내에서 박스를 꽉 채우도록 설정 */
+    position: relative; /* 삭제 버튼을 위치시키기 위해 relative 설정 */
+}
+
+/* 메모 삭제 버튼 */
+.delete-form {
+    position: absolute;
+    top: 50%;
+    left: -40px;
+    transform: translateY(-50%);
+}
+
+/* 메모 삭제 버튼 */
+.delete-btn {
+    opacity: 0; /* 기본적으로 투명하게 설정 */
+    background-color: #d3d3d3; /* 옅은 회색 */
+    border: none;
+    color: #333;
+    padding: 5px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: opacity 0.3s ease, background-color 0.2s; /* 서서히 나타나고 사라지도록 transition 설정 */
+}
+
+/* 메모 항목에 커서를 올릴 때 삭제 버튼 표시 */
+.memo-item:hover .delete-btn {
+    opacity: 1; /* 호버 시 삭제 버튼이 나타남 */
+}
+
+.delete-btn:hover {
+    background-color: #a9a9a9; /* 커서 올렸을 때 색상 변경 */
+}
+
