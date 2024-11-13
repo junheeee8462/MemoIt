@@ -9,5 +9,4 @@ simple project Memo Web
 - 회원 별 메모 추가 및 삭제 기능 구현
 
 ## 2. DB 구조
-[Untitled.pdf](https://github.com/user-attachments/files/17724551/Untitled.pdf)
 
