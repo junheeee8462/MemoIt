@@ -1,5 +1,5 @@
-# MemoWeb
-simple project Memo Web
+# MemoIt
+간단한 메모장 웹 사이트!
 
 
 ## 1. 프로젝트 개요
