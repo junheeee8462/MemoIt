@@ -30,4 +30,5 @@ Window: 기본 '메모장' 앱 사용
 2. 간단한 메모지만 로그인을 해서 어디서든 확인하고 싶을 때 사용
 3. 메모를 기록한 시간, 날짜를 자동으로 기입 해야할 경우 사용
 
-<img width="1680" alt="스크린샷 2024-11-13 오전 11 49 29" src="https://github.com/user-attachments/assets/5609bba8-d26d-429c-b784-4919d8d5a79e">                   
+
+<img width="1680" alt="스크린샷 2024-11-13 오후 12 02 46" src="https://github.com/user-attachments/assets/9a133bc2-716c-447b-b54c-381b4d3e824f">
