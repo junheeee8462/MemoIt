@@ -39,3 +39,9 @@ Window: 기본 '메모장' 앱 사용
 
 
 <img width="1680" alt="스크린샷 2024-11-13 오후 12 02 46" src="https://github.com/user-attachments/assets/9a133bc2-716c-447b-b54c-381b4d3e824f">
+
+
+### 4. 데이터 베이스 구조
+
+
+![Untitled](https://github.com/user-attachments/assets/1bcb1ed8-a5f4-4405-bc3e-bfd26fc6bfe5)
