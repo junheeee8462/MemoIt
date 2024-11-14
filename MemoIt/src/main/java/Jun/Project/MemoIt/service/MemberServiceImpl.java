@@ -1,8 +1,8 @@
 package Jun.Project.MemoIt.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-
 import Jun.Project.MemoIt.dao.MemberDAO;
 import Jun.Project.MemoIt.model.Member;
 
@@ -11,22 +11,33 @@ public class MemberServiceImpl implements MemberService {
     @Autowired
     private MemberDAO memberDAO;
 
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
+
     @Override
     public void register(Member member) {
-        String encryptedPassword = encryptPassword(member.getPassword());
+        // 아이디 중복 확인
+        if (isUsernameExists(member.getUsername())) {
+            throw new IllegalArgumentException("동일한 아이디가 존재합니다");
+        }
+        // 비밀번호 암호화
+        String encryptedPassword = passwordEncoder.encode(member.getPassword());
         member.setPassword(encryptedPassword);
         memberDAO.register(member);
     }
 
     @Override
     public Member login(String username, String password) {
-        String encryptedPassword = encryptPassword(password);
-        return memberDAO.login(username, encryptedPassword);
+        Member member = memberDAO.findByUsername(username);
+        if (member != null && passwordEncoder.matches(password, member.getPassword())) {
+            return member;
+        } else {
+            return null;
+        }
     }
 
-    // 암호화 메서드
-    private String encryptPassword(String password) {
-        //아직 구현되어있지 않
-        return password; //실제 구현 시 암호화된 문자열 반환
+    // 아이디 중복 확인 메서드
+    public boolean isUsernameExists(String username) {
+        return memberDAO.isUsernameExists(username);
     }
 }

@@ -121,6 +121,14 @@
 			<version>8.0.23</version>
 		</dependency>
 
+		<!-- spring security -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>5.7.3</version> <!-- 최신 버전으로 변경 가능 -->
+		</dependency>
+
+
 
 		<dependency>
 			<groupId>org.springframework</groupId>
