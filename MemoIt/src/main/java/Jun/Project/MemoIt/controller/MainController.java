@@ -1,6 +1,7 @@
 package Jun.Project.MemoIt.controller;
 
 import java.util.List;
+import java.util.Map;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,11 +29,19 @@ public class MainController {
     public String home(HttpSession session, Model model) {
         Member loggedInUser = (Member) session.getAttribute("loggedInUser");
         if (loggedInUser != null) {
-            // 로그인된 사용자 정보와 해당 사용자의 메모 리스트를 모델에 추가
+            // 로그인된 사용자 정보와 해당 사용자의 메모 리스트 및 분류된 메모 리스트를 모델에 추가
             model.addAttribute("loggedInUser", loggedInUser);
             model.addAttribute("userId", loggedInUser.getUsername()); // 유저 ID 추가
+            
+            // 일반 메모 리스트
             List<Memo> memos = memoService.getMemosByMemberId(loggedInUser.getId());
             model.addAttribute("memos", memos);
+
+            // 분류된 메모 리스트
+            Map<String, List<Memo>> categorizedMemos = memoService.getCategorizedMemos(loggedInUser.getId());
+            model.addAttribute("categorizedMemos", categorizedMemos);
+               
+            
         }
         return "home";
     }
@@ -59,7 +68,6 @@ public class MainController {
     // 회원가입 처리
     @PostMapping("/register")
     public String register(Member member, Model model) {
-        // 회원가입 처리 후 로그인 페이지로 리다이렉트
         memberService.register(member);
         model.addAttribute("message", "Registration successful!");
         return "login";
@@ -87,11 +95,9 @@ public class MainController {
         }
     }
 
-
     // 로그아웃 처리
     @GetMapping("/logout")
     public String logout(HttpSession session) {
-        // 세션 무효화 후 메인 페이지로 리다이렉트
         session.invalidate();
         return "redirect:/";
     }
@@ -101,9 +107,8 @@ public class MainController {
     public String deleteMemo(@RequestParam("memoId") int memoId, HttpSession session) {
         Member loggedInUser = (Member) session.getAttribute("loggedInUser");
         if (loggedInUser != null) {
-            // 현재 로그인된 사용자의 메모만 삭제할 수 있도록 처리
             memoService.deleteMemoById(memoId, loggedInUser.getId());
         }
-        return "redirect:/"; // 메모 삭제 후 메인 페이지로 리다이렉트
+        return "redirect:/";
     }
 }

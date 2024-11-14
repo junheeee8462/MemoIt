@@ -9,5 +9,6 @@ public interface MemoDao {
 	void addMemo(Memo memo);
     List<Memo> getMemosByMemberId(Long memberId);
     void deleteMemoById(int memoId, Long memberId);
+	List<Memo> findByMemberId(Long memberId);
 
 }
