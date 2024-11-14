@@ -79,15 +79,14 @@ public class MainController {
                         Model model) {
         Member member = memberService.login(username, password);
         if (member != null) {
-            // 로그인 성공 시, 세션에 사용자 정보 저장 및 메인 페이지로 리다이렉트
             session.setAttribute("loggedInUser", member);
             return "redirect:/";
         } else {
-            // 로그인 실패 시, 에러 메시지를 모델에 추가하고 로그인 페이지로 이동
             model.addAttribute("error", "Invalid username or password");
-            return "login"; // 에러 메시지를 포함하여 로그인 페이지로 리턴
+            return "login";
         }
     }
+
 
     // 로그아웃 처리
     @GetMapping("/logout")
