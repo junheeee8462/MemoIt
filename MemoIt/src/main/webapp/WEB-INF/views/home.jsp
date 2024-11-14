@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main Page</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/home.css">
+    <script src="${pageContext.request.contextPath}/resources/js/home.js" defer></script>
+    
 </head>
 <body>
     <div class="container">
@@ -37,8 +39,11 @@
             <c:forEach var="category" items="${categorizedMemos}">
                 <!-- 카테고리 제목 -->
                 <div class="memo-category">
-                    <h4>${category.key}</h4> <!-- 카테고리 이름 출력 -->
-                    <ul>
+                    <h4 class="category-title">
+                        <span>${category.key}</span>
+                        <button class="toggle-btn">+</button>
+                    </h4>
+                    <ul class="memo-items" style="display: none;">
                         <!-- 해당 카테고리의 메모 목록 출력 -->
                         <c:forEach var="memo" items="${category.value}">
                             <li class="memo-item">

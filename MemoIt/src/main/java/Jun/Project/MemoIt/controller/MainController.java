@@ -90,7 +90,7 @@ public class MainController {
             session.setAttribute("loggedInUser", member);
             return "redirect:/";
         } else {
-            model.addAttribute("error", "Invalid username or password");
+            model.addAttribute("errorMessage", "Invalid username or password");
             return "login";
         }
     }

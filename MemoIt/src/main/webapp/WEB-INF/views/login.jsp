@@ -14,6 +14,7 @@
             <input type="password" name="password" placeholder="Password" required>
             <button type="submit">Login</button>
         </form>
+        
         <!-- 로그인 실패 메시지 표시 -->
         <c:if test="${not empty errorMessage}">
             <p class="error-message">${errorMessage}</p>
