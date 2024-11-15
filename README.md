@@ -38,4 +38,11 @@ Window: 기본 '메모장' 앱 사용
 3. 메모를 기록한 시간, 날짜를 자동으로 기입 해야할 경우 사용
 
 
-<img width="1680" alt="스크린샷 2024-11-13 오후 12 02 46" src="https://github.com/user-attachments/assets/9a133bc2-716c-447b-b54c-381b4d3e824f">
+<img width="1680" alt="스크린샷 2024-11-14 오후 4 05 28" src="https://github.com/user-attachments/assets/03454c04-1005-474e-b663-514b001ba3b2">
+
+
+
+### 4. 데이터 베이스 구조
+
+
+![Untitled](https://github.com/user-attachments/assets/1bcb1ed8-a5f4-4405-bc3e-bfd26fc6bfe5)
