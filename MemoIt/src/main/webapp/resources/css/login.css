@@ -11,6 +11,8 @@
     text-align: center;
 }
 
+
+
 /* Title styling */
 h2 {
     margin-bottom: 20px;
@@ -44,13 +46,6 @@ button {
 
 button:hover {
     background-color: #1c39bb;
-}
-
-/* login.css */
-.container {
-    width: 300px;
-    margin: 0 auto;
-    text-align: center;
 }
 
 .error-message {
