@@ -1,6 +1,7 @@
 package Jun.Project.MemoIt.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -20,17 +21,21 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	// 로그인
-	@Override
-	public Member findByUsername(String username) {
-	    String sql = "SELECT * FROM MEMBER WHERE USERNAME = ?";
-	    return jdbcTemplate.queryForObject(sql, new Object[]{username}, (rs, rowNum) -> {
-	        Member member = new Member();
-	        member.setId(rs.getLong("ID"));
-	        member.setUsername(rs.getString("USERNAME"));
-	        member.setPassword(rs.getString("PASSWORD"));
-	        return member;
-	    });
-	}
+    @Override
+    public Member findByUsername(String username) {
+        String sql = "SELECT * FROM MEMBER WHERE USERNAME = ?";
+        try {
+            return jdbcTemplate.queryForObject(sql, new Object[]{username}, (rs, rowNum) -> {
+                Member member = new Member();
+                member.setId(rs.getLong("ID"));
+                member.setUsername(rs.getString("USERNAME"));
+                member.setPassword(rs.getString("PASSWORD"));
+                return member;
+            });
+        } catch (EmptyResultDataAccessException e) {
+            return null; // 결과가 없을 때 null 반환
+        }
+    }
 
 	// 중복 아이디 확인
     public boolean isUsernameExists(String username) {

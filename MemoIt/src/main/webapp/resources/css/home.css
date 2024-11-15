@@ -7,10 +7,10 @@ body {
 }
 
 .container {
-    max-width: 800px;
+    max-width: 820px;
     margin: 0 auto;
     padding: 20px;
-    position: relative;
+    background-color: #f4f4f8;
 }
 
 /* 제목 스타일 */
@@ -34,7 +34,7 @@ h1 {
     font-weight: bold;
 }
 
-/* 메모 작성 폼 */
+/* 메모 작성 폼 스타일 */
 .memo-form {
     display: flex;
     flex-direction: column;
@@ -62,25 +62,20 @@ h1 {
     cursor: pointer;
 }
 
-/* 메모 목록 */
-.memo-list {
-    margin-top: 20px;
-}
-/* 메모 항목 */
+/* 메모 항목 스타일 */
 .memo-item {
     background-color: #fff7a8; /* 연한 노란색 */
     padding: 10px;
     margin: 10px 0;
     border-radius: 8px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-    word-wrap: break-word; /* 단어를 잘라서 다음 줄로 넘김 */
-    white-space: normal; /* 줄 바꿈 허용 */
-    overflow-wrap: break-word; /* 내용이 박스를 넘어가지 않도록 함 */
-    max-width: 100%; /* 컨테이너 내에서 박스를 꽉 채우도록 설정 */
-    position: relative; /* 삭제 버튼을 위치시키기 위해 relative 설정 */
+    word-wrap: break-word; /* 단어가 박스를 넘치지 않도록 줄 바꿈 */
+    overflow-wrap: break-word; /* 박스 넘침 방지 */
+    max-width: 100%;
+    position: relative; /* 삭제 버튼 위치 설정 */
 }
 
-/* 메모 삭제 버튼 */
+/* 메모 삭제 버튼 스타일 */
 .delete-form {
     position: absolute;
     top: 50%;
@@ -88,24 +83,44 @@ h1 {
     transform: translateY(-50%);
 }
 
-/* 메모 삭제 버튼 */
 .delete-btn {
     opacity: 0; /* 기본적으로 투명하게 설정 */
-    background-color: #d3d3d3; /* 옅은 회색 */
+    background-color: #d3d3d3;
     border: none;
     color: #333;
     padding: 5px;
     border-radius: 50%;
     cursor: pointer;
-    transition: opacity 0.3s ease, background-color 0.2s; /* 서서히 나타나고 사라지도록 transition 설정 */
+    transition: opacity 0.3s ease, background-color 0.2s; /* 호버 시 서서히 나타나도록 설정 */
 }
 
-/* 메모 항목에 커서를 올릴 때 삭제 버튼 표시 */
+/* 메모 항목에 마우스 오버 시 삭제 버튼 표시 */
 .memo-item:hover .delete-btn {
-    opacity: 1; /* 호버 시 삭제 버튼이 나타남 */
+    opacity: 1; /* 호버 시 버튼이 나타남 */
 }
 
 .delete-btn:hover {
-    background-color: #a9a9a9; /* 커서 올렸을 때 색상 변경 */
+    background-color: #a9a9a9; /* 호버 시 색상 변경 */
 }
 
+/* 카테고리 제목 및 토글 버튼 */
+.category-title {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.category-title .toggle-btn {
+    background: none;
+    border: none;
+    font-size: 16px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+/* 카테고리 내 메모 항목 리스트 */
+.memo-items {
+    margin-top: 10px;
+    padding-left: 20px;
+}

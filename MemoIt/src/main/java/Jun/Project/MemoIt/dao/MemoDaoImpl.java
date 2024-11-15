@@ -31,4 +31,10 @@ public class MemoDaoImpl implements MemoDao {
         jdbcTemplate.update(sql, memoId, memberId);
     }
 
+	@Override
+	public List<Memo> findByMemberId(Long memberId) {
+        String sql = "SELECT * FROM memo WHERE member_id = ?";
+        return jdbcTemplate.query(sql, new Object[]{memberId}, new MemoRowMapper());
+    }
+
 }

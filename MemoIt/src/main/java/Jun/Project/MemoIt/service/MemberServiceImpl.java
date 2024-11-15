@@ -29,11 +29,13 @@ public class MemberServiceImpl implements MemberService {
     @Override
     public Member login(String username, String password) {
         Member member = memberDAO.findByUsername(username);
-        if (member != null && passwordEncoder.matches(password, member.getPassword())) {
-            return member;
-        } else {
+        
+        // 아이디가 없거나 비밀번호가 일치하지 않으면 null 반환
+        if (member == null || !passwordEncoder.matches(password, member.getPassword())) {
             return null;
         }
+        
+        return member;
     }
 
     // 아이디 중복 확인 메서드
